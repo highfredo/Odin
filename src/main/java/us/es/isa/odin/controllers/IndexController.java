@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import us.es.isa.odin.controllers.common.AbstractController;
+
 @Controller
 @RequestMapping("/welcome")
-public class IndexController {
+public class IndexController extends AbstractController {
 
 	@Value("${msg}")
 	private String msg;
