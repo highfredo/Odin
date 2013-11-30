@@ -12,7 +12,6 @@
 
 	<!-- Context -->
 	<context:property-placeholder location="classpath:config/default.conf" order="10000"/>
-	<context:property-placeholder location="classpath:config/${environment}.conf" order="1" ignore-resource-not-found="true"/>
 	<context:component-scan base-package="us.es.isa.odin.controllers"/>
 	<context:annotation-config />
 	<mvc:default-servlet-handler/>
@@ -22,5 +21,16 @@
 
 	<!-- VIEWS -->
 	<import resource="config/views.xml" />
+	
+	<!-- Profile Conf -->
+	<beans profile="dev">
+		<context:property-placeholder location="classpath:config/dev.conf" order="1" />
+	</beans>
+	<beans profile="heroku">
+		<context:property-placeholder location="classpath:config/heroku.conf" order="1" />
+	</beans>
+	<beans profile="openshift">
+		<context:property-placeholder location="classpath:config/openshift.conf" order="1" />
+	</beans>
 	
 </beans>
