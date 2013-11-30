@@ -14,7 +14,7 @@ public class IndexController {
 	private String msg;
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(defaultValue = "hola") String q) {
+	public ModelAndView index(@RequestParam(defaultValue = "hola mundo") String q) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		modelAndView.addObject("q", q);
 		modelAndView.addObject("msg", msg);
