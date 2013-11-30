@@ -138,24 +138,27 @@
         <!-- /Tomcat as dependency -->
 	</dependencies>
 
-
-	<!-- Default Build command -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<!-- /Default Build commands -->
 	<!-- Profiles -->
 	<profiles>
+		<profile>
+			<id>default</id>
+		    <activation>
+		    	<activeByDefault>true</activeByDefault>
+		    </activation>
+		    <build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<configuration>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+	    </profile>
 		<!-- Openshift Build -->
 		<profile>
 			<id>openshift</id>
