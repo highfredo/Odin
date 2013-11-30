@@ -11,18 +11,28 @@
     ">
 
 	<!-- Context -->
-	<context:component-scan base-package="us.es.isa.odin.controllers"/>
+	<context:property-placeholder location="classpath:config/default.conf" order="10000"/>
+	<context:component-scan base-package="us.es.isa.odin"/>
 	<context:annotation-config />
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/favicon.ico" location="/favicon.ico"/>
 
-<!-- Estas dos lineas se quitan gracias a mvc:annotation.driven -->
-<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
-<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/> -->	
-	
-	
+
 	<!-- VIEWS -->
 	<import resource="config/views.xml" />
+	<!-- DATA -->
+	<import resource="config/data.xml" />
+	
+	<!-- Profile Conf -->
+	<beans profile="dev">
+		<context:property-placeholder location="classpath:config/default.conf,classpath:config/dev.conf" order="1" />
+	</beans>
+	<beans profile="heroku">
+		<context:property-placeholder location="classpath:config/default.conf,classpath:config/heroku.conf" order="1" />
+	</beans>
+	<beans profile="openshift">
+		<context:property-placeholder location="classpath:config/default.conf,classpath:config/openshift.conf" order="1" />
+	</beans>
 	
 </beans>
