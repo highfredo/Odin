@@ -2,7 +2,7 @@ package us.es.isa.odin.domain;
 
 
 import java.util.Map;
-import java.util.UUID;
+import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public abstract class AbstractDocument<T extends Entity> {
 	
 	@Id
-	private UUID id;
+	private ObjectId id;
 	@Version
 	private Long version;
 	private DateTime creationDate;
@@ -20,11 +20,11 @@ public abstract class AbstractDocument<T extends Entity> {
 	private T entity;
 	private Map<String, Object> extraData;
 
-	public UUID getId() {
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
@@ -74,6 +74,22 @@ public abstract class AbstractDocument<T extends Entity> {
 	
 	public Object removeExtraData(String key) {
 		return this.extraData.remove(key);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj) {
+			return true;
+		}
+
+		if (this.id == null || obj == null || !(this.getClass().equals(obj.getClass()))) {
+			return false;
+		}
+
+		AbstractDocument<?> that = (AbstractDocument<?>) obj;
+
+		return this.id.equals(that.getId());
 	}
 	
 }

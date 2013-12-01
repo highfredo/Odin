@@ -14,5 +14,7 @@
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
+	
+	<mongo:repositories base-package="us.es.isa.odin.repositories" />
  
 </beans>
