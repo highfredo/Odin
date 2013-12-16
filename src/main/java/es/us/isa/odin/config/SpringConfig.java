@@ -1,6 +1,9 @@
 package es.us.isa.odin.config;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +15,13 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring3.SpringTemplateEngine;
 import org.thymeleaf.spring3.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import com.google.common.collect.Sets;
 import com.mongodb.MongoClient;
 
 @EnableWebMvc
@@ -62,10 +69,11 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	}
 	@Bean
 	public SpringTemplateEngine thymeleafTemplateEngine() {
-		//Set<IDialect> dialects = Sets.newHashSet(new Springse);
+		Set<IDialect> dialects = new HashSet<>();
+		dialects.add(new SpringSecurityDialect());
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setTemplateResolver(thymeleafTemplateResolver());
-		//templateEngine.setAdditionalDialects(dialects);
+		templateEngine.setAdditionalDialects(dialects);
 		return templateEngine;
 	}
 	@Bean
