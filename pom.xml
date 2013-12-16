@@ -11,7 +11,7 @@
 
 	<!-- Artifact identification -->
 
-	<groupId>us.es.isa</groupId>
+	<groupId>es.us.isa</groupId>
 	<artifactId>odin</artifactId>
 	<version>0.0.1-JOHNNY</version>
 	<packaging>war</packaging>

@@ -1,4 +1,4 @@
-package us.es.isa.odin.controllers;
+package es.us.isa.odin.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import us.es.isa.odin.controllers.common.AbstractController;
-import us.es.isa.odin.domain.Document;
-import us.es.isa.odin.domain.FooEntity;
-import us.es.isa.odin.repositories.DocumentRepository;
+import es.us.isa.odin.controllers.common.AbstractController;
+import es.us.isa.odin.domain.Document;
+import es.us.isa.odin.domain.FooEntity;
+import es.us.isa.odin.repositories.DocumentRepository;
+
 
 @Controller
 @RequestMapping("/welcome")

@@ -1,4 +1,4 @@
-package us.es.isa.odin.controllers;
+package es.us.isa.odin.controllers;
 
 import javax.swing.text.html.parser.Entity;
 
@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import us.es.isa.odin.controllers.common.AbstractController;
-import us.es.isa.odin.domain.Document;
+import es.us.isa.odin.controllers.common.AbstractController;
+import es.us.isa.odin.domain.Document;
+
 
 @Controller
 @RequestMapping("/document/{entityClass}")

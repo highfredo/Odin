@@ -15,6 +15,6 @@
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
 	
-	<mongo:repositories base-package="us.es.isa.odin.repositories" />
+	<mongo:repositories base-package="es.us.isa.odin.repositories" />
  
 </beans>

@@ -1,4 +1,4 @@
-package us.es.isa.odin.controllers.common;
+package es.us.isa.odin.controllers.common;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.util.ClassUtils;

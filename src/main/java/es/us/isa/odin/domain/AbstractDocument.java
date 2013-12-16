@@ -1,4 +1,4 @@
-package us.es.isa.odin.domain;
+package es.us.isa.odin.domain;
 
 
 import java.util.Map;

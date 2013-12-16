@@ -11,7 +11,7 @@
 
 	<!-- Context -->
 	<context:property-placeholder location="classpath:config/default.conf" order="10000"/>
-	<context:component-scan base-package="us.es.isa.odin"/>
+	<context:component-scan base-package="es.us.isa.odin"/>
 	<context:annotation-config />
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven/>
