@@ -137,6 +137,14 @@
 			<version>${apache.lang.version}</version>
 		</dependency>	
 		<!-- /Apache Lang -->  
+		
+		<!-- CGLIB is required to process @Configuration classes -->  
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<!-- /CGLIB -->
 	</dependencies>
 
 	<!-- Profiles -->
