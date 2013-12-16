@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -27,6 +28,7 @@ import com.mongodb.MongoClient;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"es.us.isa.odin"})
+@Import(value={ThymeleafConfig.class, MongoConfig.class})
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	// RESOURCES
@@ -42,46 +44,5 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 	//
-	
-	// DATA MONGO
-	@Bean
-	public MongoDbFactory mongoDbFactory() throws Exception {
-		UserCredentials credentials = new UserCredentials("odin", "odin");
-		return new SimpleMongoDbFactory(new MongoClient("ds057538.mongolab.com", 57538), "odindb", credentials);
-	}
-	@Bean
-	public MongoTemplate mongoTemplate() throws Exception {
-		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
-		return mongoTemplate;
-	}
-	//
-	
-	// THYMELEAF
-	@Bean
-	public ServletContextTemplateResolver thymeleafTemplateResolver() {
-		ServletContextTemplateResolver context = new ServletContextTemplateResolver();
-		context.setPrefix("/views/");
-		context.setSuffix(".html");
-		context.setTemplateMode("HTML5");
-		context.setOrder(1);
-		context.setCacheable(false);
-		return context;
-	}
-	@Bean
-	public SpringTemplateEngine thymeleafTemplateEngine() {
-		Set<IDialect> dialects = new HashSet<>();
-		dialects.add(new SpringSecurityDialect());
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(thymeleafTemplateResolver());
-		templateEngine.setAdditionalDialects(dialects);
-		return templateEngine;
-	}
-	@Bean
-	public ThymeleafViewResolver thymeleafViewResolver() {
-		ThymeleafViewResolver viewResolver =  new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(thymeleafTemplateEngine());
-		return viewResolver;
-	}
-	//
-	
+		
 }
