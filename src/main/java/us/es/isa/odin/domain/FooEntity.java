@@ -1,6 +1,7 @@
 package us.es.isa.odin.domain;
 
-public class FooEntity implements Entity {
+
+public class FooEntity {
 
 	private String foo;
 	private String bar;

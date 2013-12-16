@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public abstract class AbstractDocument<T extends Entity> {
+public abstract class AbstractDocument<T> {
 	
 	@Id
 	private ObjectId id;
