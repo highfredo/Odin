@@ -2,9 +2,9 @@ package es.us.isa.odin.conf;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
-public class WebSecurityInitializer  extends AbstractSecurityWebApplicationInitializer {
+public class SecurityInitializer  extends AbstractSecurityWebApplicationInitializer {
 	
-	public WebSecurityInitializer() {
+	public SecurityInitializer() {
         super(SecurityConfig.class);
     }
 }
