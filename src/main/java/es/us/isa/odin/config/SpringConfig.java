@@ -12,6 +12,7 @@ import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -26,9 +27,10 @@ import com.google.common.collect.Sets;
 import com.mongodb.MongoClient;
 
 @EnableWebMvc
+@EnableWebSecurity
 @Configuration
 @ComponentScan(basePackages = {"es.us.isa.odin"})
-@Import(value={ThymeleafConfig.class, MongoConfig.class})
+@Import(value={ThymeleafConfig.class, MongoConfig.class, SecurityConfig.class})
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	// RESOURCES
