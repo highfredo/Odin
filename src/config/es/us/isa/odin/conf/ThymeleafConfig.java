@@ -1,4 +1,4 @@
-package es.us.isa.odin.config;
+package es.us.isa.odin.conf;
 
 import java.util.HashSet;
 import java.util.Set;

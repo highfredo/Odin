@@ -1,4 +1,4 @@
-package es.us.isa.odin.config;
+package es.us.isa.odin.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
