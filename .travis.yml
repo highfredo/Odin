@@ -1,1 +1,12 @@
 language: java
+
+jdk:
+    - oraclejdk7
+    - openjdk7
+
+# This command will be run prior to executing the tests,
+# to download dependencies and build the project
+install: mvn -U clean compile test-compile
+
+# This command will be run to execute the tests
+script: mvn test
