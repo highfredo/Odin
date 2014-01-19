@@ -166,72 +166,66 @@
 		</dependency>
 		<!-- /CGLIB -->
 	</dependencies>
-
+	
+	
+	<!-- Common build -->
+	<build>
+		<plugins>
+		    <plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset><directory>yo/dist</directory></fileset>
+					    <fileset><directory>yo/.tmp</directory></fileset>
+					    <fileset><directory>yo/app/components</directory></fileset>
+					    <fileset><directory>yo/node_modules</directory></fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>    
+				<groupId>com.github.trecloux</groupId>
+				<artifactId>yeoman-maven-plugin</artifactId>
+				<version>0.1</version>
+				<executions>
+					<execution>
+						<goals><goal>build</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+		    	<artifactId>maven-war-plugin</artifactId>
+		     	<version>2.4</version>
+		    	<configuration>
+		        	<failOnMissingWebXml>false</failOnMissingWebXml>
+		            <webResources>
+					   	<resource><directory>yo/dist</directory></resource>
+					</webResources>
+		       </configuration>
+		    </plugin>
+		</plugins>	
+	</build>
+	<!-- /Common build -->
+	
 	<!-- Profiles -->
 	<profiles>
+		<!-- Default Build -->
 		<profile>
 			<id>default</id>
 		    <activation>
 		    	<activeByDefault>true</activeByDefault>
 		    </activation>
-		    <build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<source>${java.version}</source>
-							<target>${java.version}</target>
-						</configuration>
-					</plugin>
-					<plugin>
-		                <artifactId>maven-war-plugin</artifactId>
-		                <version>2.4</version>
-		                <configuration>
-		                	<failOnMissingWebXml>false</failOnMissingWebXml>
-		                	<webResources>
-					            <resource>
-					                <directory>yo/dist</directory>
-					            </resource>
-					        </webResources>
-		                </configuration>
-		            </plugin>
-		            <plugin>
-					    <artifactId>maven-clean-plugin</artifactId>
-					    <version>2.5</version>
-					    <configuration>
-					        <filesets>
-					            <fileset>
-					                <directory>yo/dist</directory>
-					            </fileset>
-					            <fileset>
-					                <directory>yo/.tmp</directory>
-					            </fileset>
-					            <fileset>
-					                <directory>yo/app/components</directory>
-					            </fileset>
-					            <fileset>
-					              <directory>yo/node_modules</directory>
-					            </fileset>
-					        </filesets>
-					    </configuration>
-					</plugin>
-		            <plugin>    
-					    <groupId>com.github.trecloux</groupId>
-					    <artifactId>yeoman-maven-plugin</artifactId>
-					    <version>0.1</version>
-					    <executions>
-					        <execution>
-					            <goals>
-					                <goal>build</goal>
-					            </goals>
-					        </execution>
-					    </executions>
-					</plugin>
-				</plugins>
-			</build>
 	    </profile>
+	    <!-- /Default Build -->
 		<!-- Openshift Build -->
 		<profile>
 			<id>openshift</id>
@@ -261,22 +255,6 @@
 	        </activation>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<source>${java.version}</source>
-							<target>${java.version}</target>
-						</configuration>
-					</plugin>
-					<plugin>
-		                <artifactId>maven-war-plugin</artifactId>
-		                <version>2.4</version>
-		                <configuration>
-							<failOnMissingWebXml>false</failOnMissingWebXml>
-						</configuration>
-		            </plugin>
 		            <plugin>
 		                <groupId>org.apache.maven.plugins</groupId>
 		                <artifactId>maven-dependency-plugin</artifactId>
@@ -304,18 +282,4 @@
 		<!-- /Heroku Build -->
 	</profiles>
 	<!-- /Profiles -->
-	
-	
-	<!-- Repositories -->
-	<repositories>
-	    <repository>
-	        <id>spring-milestones</id>
-	        <name>Spring Milestones</name>
-	        <url>http://repo.spring.io/milestone</url>
-	        <snapshots>
-	            <enabled>false</enabled>
-	        </snapshots>
-	    </repository>
-	</repositories>
-	<!-- /Repositories -->
 </project> 
