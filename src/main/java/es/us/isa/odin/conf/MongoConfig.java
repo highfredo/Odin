@@ -6,10 +6,14 @@ import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.MongoClient;
 
+import es.us.isa.odin.repositories.base.MyRepositoryFactoryBean;
+
 @Configuration
+@EnableMongoRepositories( value = "es.us.isa.odin.repositories", repositoryFactoryBeanClass = MyRepositoryFactoryBean.class)
 public class MongoConfig {
 
 	@Bean
@@ -22,5 +26,5 @@ public class MongoConfig {
 		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
 		return mongoTemplate;
 	}
-
+	
 }

@@ -1,4 +1,4 @@
-package es.us.isa.odin.domain;
+package es.us.isa.odin.domain.entity;
 
 
 public class FooEntity {
