@@ -48,6 +48,7 @@ public class IndexController extends AbstractController {
 		
 		Document<FooEntity> doc = new Document<>();
 		doc.setEntity(foo);
+		System.out.println(repository.findAll().size());
 		repository.save(doc);
 		
 		return modelAndView;

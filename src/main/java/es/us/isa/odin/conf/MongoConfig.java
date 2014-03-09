@@ -10,12 +10,13 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import com.mongodb.MongoClient;
 
-import es.us.isa.odin.repositories.base.MyRepositoryFactoryBean;
+import es.us.isa.odin.repositories.base.CustomRepositoryFactoryBean;
 
 @Configuration
-@EnableMongoRepositories( value = "es.us.isa.odin.repositories", repositoryFactoryBeanClass = MyRepositoryFactoryBean.class)
+@EnableMongoRepositories( basePackages = "es.us.isa.odin.repositories", repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)
 public class MongoConfig {
 
+	
 	@Bean
 	public MongoDbFactory mongoDbFactory() throws Exception {
 		UserCredentials credentials = new UserCredentials("odin", "odin");

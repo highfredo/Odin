@@ -1,6 +1,8 @@
 package es.us.isa.odin.domain.entity;
 
+import es.us.isa.odin.annotations.CustomMongoCollection;
 
+@CustomMongoCollection("Pelota")
 public class FooEntity {
 
 	private String foo;
