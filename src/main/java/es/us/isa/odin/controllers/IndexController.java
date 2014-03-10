@@ -1,6 +1,8 @@
 package es.us.isa.odin.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import es.us.isa.odin.controllers.common.AbstractController;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
-import es.us.isa.odin.repositories.DocumentRepository;
+import es.us.isa.odin.repositories.FooRepository;
 
 
 @Controller
@@ -22,7 +24,7 @@ public class IndexController extends AbstractController {
 	//private String msg;
 	
 	@Autowired
-	private DocumentRepository repository;
+	private FooRepository repository;
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@RequestParam(defaultValue = "hola mundo") String q) {
@@ -50,6 +52,7 @@ public class IndexController extends AbstractController {
 		doc.setEntity(foo);
 		System.out.println(repository.findAll().size());
 		repository.save(doc);
+		List<Document<FooEntity>> t = repository.test();
 		
 		return modelAndView;
 	}
