@@ -52,7 +52,10 @@ public class IndexController extends AbstractController {
 		doc.setEntity(foo);
 		System.out.println(repository.findAll().size());
 		repository.save(doc);
-		List<Document<FooEntity>> t = repository.test();
+		//List<Document<FooEntity>> t = repository.test();
+		Document<FooEntity> t = repository.findAll().get(0);
+		t.addExtraData("hola", "mundo");
+		//repository.save(t);
 		
 		return modelAndView;
 	}

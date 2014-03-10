@@ -1,8 +1,9 @@
 package es.us.isa.odin.domain.entity;
 
-import es.us.isa.odin.annotations.CustomMongoCollection;
+import es.us.isa.odin.annotations.PostPersist;
+import es.us.isa.odin.annotations.PrePersist;
 
-@CustomMongoCollection("Pelota")
+
 public class FooEntity {
 
 	private String foo;
@@ -21,5 +22,14 @@ public class FooEntity {
 		this.bar = bar;
 	}
 	
+	@PrePersist
+	public void prePersist() {
+		System.out.println("PRE");
+	}
+	
+	@PostPersist
+	public void postPersist() {
+		System.out.println("POST");
+	}
 	
 }

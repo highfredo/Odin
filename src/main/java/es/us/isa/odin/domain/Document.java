@@ -1,11 +1,17 @@
 package es.us.isa.odin.domain;
 
 
+import java.util.HashMap;
 import java.util.Map;
 import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+
+import es.us.isa.odin.annotations.EditedDate;
+import es.us.isa.odin.annotations.PostPersist;
+import es.us.isa.odin.annotations.PrePersist;
 
 
 public class Document<T> {
@@ -14,10 +20,17 @@ public class Document<T> {
 	private ObjectId id;
 	@Version
 	private Long version;
+	@CreatedDate
 	private DateTime creationDate;
+	@EditedDate
 	private DateTime lastEdit;
 	private T entity;
 	private Map<String, Object> extraData;
+	
+	
+	public Document() {
+		extraData = new HashMap<>();
+	}
 
 	public ObjectId getId() {
 		return id;
@@ -89,6 +102,17 @@ public class Document<T> {
 		Document<?> that = (Document<?>) obj;
 
 		return this.id.equals(that.getId());
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		System.out.println("PRE DOC");
+		addExtraData("KOKO", "KK");
+	}
+	
+	@PostPersist
+	public void postPersist() {
+		System.out.println("POST DOC");
 	}
 	
 }

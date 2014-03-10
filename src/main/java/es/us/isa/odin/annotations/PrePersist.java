@@ -7,14 +7,10 @@ import java.lang.annotation.Target;
 
 import org.springframework.transaction.annotation.Transactional;
 
-@Target({ElementType.TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Transactional(readOnly = true)
-public @interface CustomMongoCollection {
+public @interface PrePersist {
 
-	/**
-	 * Coleccion donde se guardará la entidad 
-	 */
-	String value();
 	
 }
