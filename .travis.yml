@@ -7,7 +7,7 @@ jdk:
 # This command will be run prior to executing the tests,
 # to download dependencies and build the project
 #install: mvn -U clean compile package test-compile
-install: mvn -U install -B
+install: mvn -U install -B -DskipTests=true
 
 # This command will be run to execute the tests
 script: mvn test -B
