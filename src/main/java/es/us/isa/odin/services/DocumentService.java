@@ -17,4 +17,5 @@ public class DocumentService extends AbstractService<Object> {
 		return fooRepository;
 	}
 
+	// TODO: implementar XX(XX, String collection)
 }

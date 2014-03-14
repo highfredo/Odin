@@ -27,6 +27,10 @@ public class Document<T> {
 	private T entity;
 	private Map<String, Object> extraData;
 	
+	public Document(T entity) {
+		extraData = new HashMap<>();
+		this.entity = entity;
+	}
 	
 	public Document() {
 		extraData = new HashMap<>();

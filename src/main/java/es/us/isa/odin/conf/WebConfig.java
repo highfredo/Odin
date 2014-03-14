@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import es.us.isa.odin.events.CreatedDateMongoEventListener;
 import es.us.isa.odin.events.EditedDateMongoEventListener;
 import es.us.isa.odin.events.PrePostPersistMongoEventListener;
 import es.us.isa.odin.interceptors.HttpErrorInterceptor;
@@ -48,5 +49,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public EditedDateMongoEventListener editedDateMongoEventListener() {
 		return new EditedDateMongoEventListener();
 	}
-
+	
+	@Bean
+	public CreatedDateMongoEventListener createdDateMongoEventListener() {
+		return new CreatedDateMongoEventListener();
+	}
 }

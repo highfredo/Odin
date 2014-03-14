@@ -2,6 +2,8 @@ package es.us.isa.odin.rest.base;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 
 public class JSONMapper extends ObjectMapper {
@@ -16,6 +18,8 @@ public class JSONMapper extends ObjectMapper {
         // module.addSerializer(ObjectId.class, new ObjectIdSerializer());
         // module.addDeserializer(ObjectId.class, new ObjectIdDeserializer());
         registerModule(module);
+        registerModule(new JodaModule());
+        registerModule(new GuavaModule());
     }
 
 }
