@@ -8,7 +8,7 @@ import es.us.isa.odin.repositories.documents.DocumentRepository;
 public abstract class AbstractService<T> {
 
 	public abstract DocumentRepository<T> repository();
-		
+	
 	public Document<T> save(Document<T> document) {
 		return repository().save(document);
 	}

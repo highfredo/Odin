@@ -1,6 +1,9 @@
-package es.us.isa.odin.conf;
+package es.us.isa.odin.conf.initializers;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import es.us.isa.odin.conf.SecurityConfig;
+import es.us.isa.odin.conf.WebConfig;
 
 /**
  * http://static.springsource.org/spring-framework/docs/3.2.0.RELEASE/spring-framework-reference/html/mvc.html#mvc-

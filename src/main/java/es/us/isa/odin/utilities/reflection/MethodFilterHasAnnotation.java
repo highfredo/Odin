@@ -15,7 +15,7 @@ public class MethodFilterHasAnnotation implements MethodFilter {
 	
 	@Override
 	public boolean matches(Method method) {
-		return method.getAnnotation(annotation) == null ? false : true;
+		return method.isAnnotationPresent(annotation);
 	}
 
 }

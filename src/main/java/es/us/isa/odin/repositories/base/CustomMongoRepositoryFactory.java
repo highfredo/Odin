@@ -17,9 +17,10 @@ import org.springframework.data.mongodb.repository.support.MongoRepositoryFactor
 import org.springframework.data.mongodb.repository.support.QueryDslMongoRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.core.RepositoryMetadata;
-import org.springframework.stereotype.Repository;
 
 import com.google.common.base.Strings;
+
+import es.us.isa.odin.annotations.CustomMongoCollection;
 
 public class CustomMongoRepositoryFactory extends MongoRepositoryFactory {
 
@@ -38,7 +39,7 @@ public class CustomMongoRepositoryFactory extends MongoRepositoryFactory {
 	protected Object getTargetRepository(RepositoryMetadata metadata) {
 
 		Class<?> repositoryInterface = metadata.getRepositoryInterface();
-		String collectionName = metadata.getRepositoryInterface().getAnnotation(Repository.class).value();
+		String collectionName = metadata.getRepositoryInterface().getAnnotation(CustomMongoCollection.class).value();
 		MongoEntityInformation<?, Serializable> entityInformation = getEntityInformation(metadata.getDomainType(), collectionName);
 
 		if (isQueryDslRepository(repositoryInterface)) {

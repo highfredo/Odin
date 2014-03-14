@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import es.us.isa.odin.annotations.CustomMongoCollection;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
 import es.us.isa.odin.repositories.documents.DocumentRepository;
 
 @Repository
+@CustomMongoCollection("repositorioMolon")
 public interface FooRepository extends DocumentRepository<FooEntity> {
 
 	@Query("{ version : { $gt : -1 }}")

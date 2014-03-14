@@ -9,21 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.us.isa.odin.controllers.common.AbstractController;
-import es.us.isa.odin.domain.Docu;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
-import es.us.isa.odin.repositories.FooRepository;
+import es.us.isa.odin.services.FooService;
 
 
 @Controller
 @RequestMapping("/welcome")
 public class IndexController extends AbstractController {
 
-	//@Value("${msg}")
-	//private String msg;
-	
 	@Autowired
-	private FooRepository repository;
+	private FooService fooService;
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@RequestParam(defaultValue = "hola mundo") String q) {
@@ -40,21 +36,18 @@ public class IndexController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "/save")
-	public ModelAndView save(@RequestParam(defaultValue = "hola mundo") String q) {
+	public ModelAndView save(@RequestParam(defaultValue = "hola foo") String foo, @RequestParam(defaultValue = "hola bar") String bar) {
 		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView.addObject("q", q);
+		modelAndView.addObject("q", foo);
 		
-		FooEntity foo = new FooEntity();
-		foo.setBar(q);
-		
+		FooEntity fooEntity = new FooEntity();
+		fooEntity.setFoo(foo);
+		fooEntity.setBar(bar);
 		Document<FooEntity> doc = new Document<>();
-		doc.setEntity(foo);
-		System.out.println(repository.findAll().size());
-		repository.save(doc);
-		//List<Document<FooEntity>> t = repository.test();
-		Document<FooEntity> t = repository.findAll().get(0);
-		t.addExtraData("hola", "mundo");
-		//repository.save(t);
+		doc.setEntity(fooEntity);
+		
+		fooService.save(doc);
+		
 				
 		return modelAndView;
 	}
