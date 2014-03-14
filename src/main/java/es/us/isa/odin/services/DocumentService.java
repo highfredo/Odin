@@ -3,18 +3,17 @@ package es.us.isa.odin.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.us.isa.odin.domain.entity.FooEntity;
-import es.us.isa.odin.repositories.FooRepository;
+import es.us.isa.odin.repositories.DocumentRepository;
 import es.us.isa.odin.repositories.documents.IDocumentRepository;
 
 @Service
-public class FooService extends AbstractService<FooEntity> {
+public class DocumentService extends AbstractService<Object> {
 
 	@Autowired
-	private FooRepository fooRepository;
+	private DocumentRepository fooRepository;
 	
 	@Override
-	public IDocumentRepository<FooEntity> repository() {
+	public IDocumentRepository<Object> repository() {
 		return fooRepository;
 	}
 

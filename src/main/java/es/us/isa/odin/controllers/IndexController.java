@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import es.us.isa.odin.controllers.common.AbstractController;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
+import es.us.isa.odin.services.DocumentService;
 import es.us.isa.odin.services.FooService;
 
 
@@ -20,6 +21,8 @@ public class IndexController extends AbstractController {
 
 	@Autowired
 	private FooService fooService;
+	@Autowired
+	private DocumentService documentService;
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@RequestParam(defaultValue = "hola mundo") String q) {
@@ -43,10 +46,11 @@ public class IndexController extends AbstractController {
 		FooEntity fooEntity = new FooEntity();
 		fooEntity.setFoo(foo);
 		fooEntity.setBar(bar);
-		Document<FooEntity> doc = new Document<>();
+		Document<Object> doc = new Document<>();
 		doc.setEntity(fooEntity);
 		
-		fooService.save(doc);
+		// fooService.save(doc);
+		documentService.save(doc);
 		
 				
 		return modelAndView;

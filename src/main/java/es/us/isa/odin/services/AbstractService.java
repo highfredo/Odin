@@ -3,11 +3,11 @@ package es.us.isa.odin.services;
 import java.util.List;
 
 import es.us.isa.odin.domain.Document;
-import es.us.isa.odin.repositories.documents.DocumentRepository;
+import es.us.isa.odin.repositories.documents.IDocumentRepository;
 
 public abstract class AbstractService<T> {
 
-	public abstract DocumentRepository<T> repository();
+	public abstract IDocumentRepository<T> repository();
 	
 	public Document<T> save(Document<T> document) {
 		return repository().save(document);

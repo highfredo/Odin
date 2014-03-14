@@ -39,8 +39,14 @@ public class CustomMongoRepositoryFactory extends MongoRepositoryFactory {
 	protected Object getTargetRepository(RepositoryMetadata metadata) {
 
 		Class<?> repositoryInterface = metadata.getRepositoryInterface();
-		String collectionName = metadata.getRepositoryInterface().getAnnotation(CustomMongoCollection.class).value();
-		MongoEntityInformation<?, Serializable> entityInformation = getEntityInformation(metadata.getDomainType(), collectionName);
+		MongoEntityInformation<?, Serializable> entityInformation;
+		
+		try {
+			String collectionName = metadata.getRepositoryInterface().getAnnotation(CustomMongoCollection.class).value();
+			entityInformation = getEntityInformation(metadata.getDomainType(), collectionName);
+		} catch(NullPointerException npe) {
+			entityInformation = getEntityInformation(metadata.getDomainType());
+		}
 
 		if (isQueryDslRepository(repositoryInterface)) {
 			return new QueryDslMongoRepository(entityInformation, mongoOperations);

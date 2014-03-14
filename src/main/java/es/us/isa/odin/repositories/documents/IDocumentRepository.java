@@ -6,6 +6,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 import es.us.isa.odin.domain.Document;
 
 @NoRepositoryBean
-public interface DocumentRepository<T> extends MongoRepository<Document<T>, String> {
+public interface IDocumentRepository<T> extends MongoRepository<Document<T>, String> {
 
 }
