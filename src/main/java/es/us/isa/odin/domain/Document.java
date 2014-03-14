@@ -3,7 +3,7 @@ package es.us.isa.odin.domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.bson.types.ObjectId;
+
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -17,7 +17,7 @@ import es.us.isa.odin.annotations.PrePersist;
 public class Document<T> {
 	
 	@Id
-	private ObjectId id;
+	private String id;
 	@Version
 	private Long version;
 	@CreatedDate
@@ -32,11 +32,11 @@ public class Document<T> {
 		extraData = new HashMap<>();
 	}
 
-	public ObjectId getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(ObjectId id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

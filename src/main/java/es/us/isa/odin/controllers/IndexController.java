@@ -1,8 +1,6 @@
 package es.us.isa.odin.controllers;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.us.isa.odin.controllers.common.AbstractController;
+import es.us.isa.odin.domain.Docu;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
 import es.us.isa.odin.repositories.FooRepository;
@@ -56,7 +55,7 @@ public class IndexController extends AbstractController {
 		Document<FooEntity> t = repository.findAll().get(0);
 		t.addExtraData("hola", "mundo");
 		//repository.save(t);
-		
+				
 		return modelAndView;
 	}
 
