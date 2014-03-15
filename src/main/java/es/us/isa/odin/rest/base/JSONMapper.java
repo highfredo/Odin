@@ -15,8 +15,6 @@ public class JSONMapper extends ObjectMapper {
 
 	public JSONMapper() {
         SimpleModule module = new SimpleModule();
-        // module.addSerializer(ObjectId.class, new ObjectIdSerializer());
-        // module.addDeserializer(ObjectId.class, new ObjectIdDeserializer());
         registerModule(module);
         registerModule(new JodaModule());
         registerModule(new GuavaModule());
