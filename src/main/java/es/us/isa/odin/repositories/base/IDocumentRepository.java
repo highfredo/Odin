@@ -1,4 +1,4 @@
-package es.us.isa.odin.repositories.documents;
+package es.us.isa.odin.repositories.base;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;

@@ -1,5 +1,6 @@
 package es.us.isa.odin.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.common.collect.Lists;
 
 import es.us.isa.odin.controllers.common.AbstractController;
 import es.us.isa.odin.domain.Document;
@@ -23,45 +26,59 @@ public class DocumentController extends AbstractController {
 	@Autowired
 	private DocumentService documentService;
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/create", method=RequestMethod.POST)
-	public ModelAndView create(@PathVariable String entityClass, @RequestBody Map<String, Object> entity) { 
+	public ModelAndView create(@PathVariable String entityClass, @RequestBody Document<Map<String, Object>> document) { 
 		ModelAndView result = new JsonModelAndView();
-		entity.put("entityClass", entityClass);
-		Document<Object> document = new Document<>((Object) entity);
 		Document<Object> created = documentService.save(document);
 		result.addObject(created);
 		
 		return result;
 	}
-/*
-	@Override
-	@RequestMapping(value = "/edit/{id}/{version}")
-	public ModelAndView edit(Object entity) {
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/edit")
+	public ModelAndView edit(@PathVariable String entityClass, @RequestBody Document<Map<String, Object>> document) {
 		ModelAndView result = new JsonModelAndView();
-		Document<Object> edited = documentService.save(document);
+
+		Document<Map<String, Object>> toUpdateDoc = documentService.findOne(document.getId());
+		toUpdateDoc.setVersion(document.getVersion());
+		
+		// Merge entity
+		Map<String, Object> toUpdateEntity = toUpdateDoc.getEntity();
+		toUpdateEntity.putAll(document.getEntity());
+		toUpdateDoc.setEntity(toUpdateEntity);
+		
+		// Merge extra data
+		Map<String, Object> toUpdateExtra = toUpdateDoc.getExtraData();
+		toUpdateExtra.putAll(document.getExtraData());
+		toUpdateDoc.setExtraData(toUpdateExtra);
+		
+		Document<Object> edited = documentService.save(toUpdateDoc);
 		result.addObject(edited);
 		
 		return result;
 	}
-
-	@Override
+	
 	@RequestMapping(value = "/delete")
-	public ModelAndView delete(String id) {
+	public ModelAndView delete(@PathVariable String entityClass, @RequestBody List<String> ids) {
 		ModelAndView result = new JsonModelAndView();
-		documentService.delete(id);
-		result.addObject(id + " deleted.");
+		for(String id : ids)
+			documentService.delete(id);
+		
+		result.addObject("result", "Deleted.");
 		
 		return result;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/get")
-	public ModelAndView get(List<String> ids) {
+	public ModelAndView get(@RequestBody List<String> ids) {
 		ModelAndView result = new JsonModelAndView();
 		List<Document<Object>> docs = Lists.newArrayList(documentService.findAll(ids));
 		result.addObject(docs);
 		
 		return result;
 	}
-	*/
+	
 }

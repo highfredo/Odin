@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.us.isa.odin.repositories.DocumentRepository;
-import es.us.isa.odin.repositories.documents.IDocumentRepository;
+import es.us.isa.odin.repositories.base.IDocumentRepository;
 
 @Service
-public class DocumentService extends AbstractService<Object> {
+@SuppressWarnings("rawtypes")
+public class DocumentService extends AbstractService {
 
 	@Autowired
 	private DocumentRepository fooRepository;

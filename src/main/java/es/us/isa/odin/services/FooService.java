@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import es.us.isa.odin.domain.entity.FooEntity;
 import es.us.isa.odin.repositories.FooRepository;
-import es.us.isa.odin.repositories.documents.IDocumentRepository;
+import es.us.isa.odin.repositories.base.IDocumentRepository;
 
 @Service
 public class FooService extends AbstractService<FooEntity> {

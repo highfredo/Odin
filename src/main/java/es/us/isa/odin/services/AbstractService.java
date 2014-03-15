@@ -3,7 +3,7 @@ package es.us.isa.odin.services;
 import java.util.List;
 
 import es.us.isa.odin.domain.Document;
-import es.us.isa.odin.repositories.documents.IDocumentRepository;
+import es.us.isa.odin.repositories.base.IDocumentRepository;
 
 public abstract class AbstractService<T> {
 

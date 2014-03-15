@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import es.us.isa.odin.annotations.CustomMongoCollection;
 import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.domain.entity.FooEntity;
-import es.us.isa.odin.repositories.documents.IDocumentRepository;
+import es.us.isa.odin.repositories.base.IDocumentRepository;
 
 @Repository
 @CustomMongoCollection("repositorioMolon")
