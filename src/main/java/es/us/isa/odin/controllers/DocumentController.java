@@ -30,7 +30,7 @@ public class DocumentController extends AbstractController {
 	@RequestMapping(value = "/create", method=RequestMethod.POST)
 	public ModelAndView create(@PathVariable String entityClass, @RequestBody Document<Map<String, Object>> document) { 
 		ModelAndView result = new JsonModelAndView();
-		Document<Object> created = documentService.save(document);
+		Document<Object> created = documentService.save(document, entityClass);
 		result.addObject(created);
 		
 		return result;
