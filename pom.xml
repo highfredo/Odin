@@ -32,6 +32,7 @@
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<spring.security.version>3.2.1.RELEASE</spring.security.version>
 		<spring.mongo.version>1.4.0.RELEASE</spring.mongo.version>
+		<spring.hateoas.version>0.9.0.RELEASE</spring.hateoas.version>
 		
 		<thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
 		<thymeleaf.springsecurity3.version>2.1.1.RELEASE</thymeleaf.springsecurity3.version>
@@ -81,6 +82,12 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
+		<dependency>
+	        <groupId>org.springframework.hateoas</groupId>
+	        <artifactId>spring-hateoas</artifactId>
+	        <version>${spring.hateoas.version}</version>
+	    </dependency>		
 		<!-- /Spring framework -->
 		
 

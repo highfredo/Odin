@@ -1,4 +1,4 @@
-package es.us.isa.odin.events;
+package es.us.isa.odin.repositories.events;
 
 
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;

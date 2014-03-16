@@ -1,29 +1,33 @@
-package es.us.isa.odin.events;
+package es.us.isa.odin.repositories.events;
 
 import java.lang.reflect.Field;
 
 import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
 
-import es.us.isa.odin.annotations.EditedDate;
+import com.google.common.base.Strings;
+
+import es.us.isa.odin.domain.Document;
 import es.us.isa.odin.utilities.reflection.FieldFilterHasAnnotation;
 
-public class EditedDateMongoEventListener extends AbstractMongoEventListener<Object> {
+public class CreatedDateMongoEventListener extends AbstractMongoEventListener<Document<?>> {
 	
 	@Override
-	public void onBeforeConvert(final Object source) {
+	public void onBeforeConvert(final Document<?> source) {
 		ReflectionUtils.doWithFields(source.getClass(), 
 				new FieldCallback() {				
 					@Override
 					public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
 						ReflectionUtils.makeAccessible(field);
-						field.set(source, new DateTime());		
+						if(Strings.isNullOrEmpty(source.getId()))
+							field.set(source, new DateTime());		
 					}
 				}, 
-				new FieldFilterHasAnnotation(EditedDate.class)
+				new FieldFilterHasAnnotation(CreatedDate.class)
 		);
 	}
-
+	
 }
