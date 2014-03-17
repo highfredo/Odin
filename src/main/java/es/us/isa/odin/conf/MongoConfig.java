@@ -13,7 +13,7 @@ import com.mongodb.MongoClient;
 import es.us.isa.odin.repositories.base.CustomRepositoryFactoryBean;
 
 @Configuration
-@EnableMongoRepositories( basePackages = "es.us.isa.odin.repositories", repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)
+@EnableMongoRepositories( basePackages = {"es.us.isa.odin.repositories"}, repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)
 public class MongoConfig {
 
 	

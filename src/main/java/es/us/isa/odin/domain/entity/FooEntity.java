@@ -23,12 +23,12 @@ public class FooEntity {
 	}
 	
 	@PrePersist
-	public void prePersist() {
+	public void prePersistEntity() {
 		System.out.println("PRE");
 	}
 	
 	@PostPersist
-	public void postPersist() {
+	public void postPersistEntity() {
 		System.out.println("POST");
 	}
 	

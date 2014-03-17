@@ -13,20 +13,19 @@ import es.us.isa.odin.utilities.encoder.Sha512PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity( prePostEnabled = true )
-@ComponentScan(basePackages = {"es.mark.easysupermarket"})
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@ComponentScan(basePackages = {"es.us.isa.odin"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserAccountService userDetailsServiceImpl;
+	private UserAccountService userDetailsService;
 	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
         http.authorizeRequests()
         	.antMatchers("/security/**").permitAll()
-        	.antMatchers("/**").hasRole("ADMIN");
+        	.antMatchers("/**").permitAll();//.hasRole("ADMIN");
         		
         http.formLogin()
             .defaultSuccessUrl("/")
@@ -44,6 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(new Sha512PasswordEncoder());
+    	auth.userDetailsService(userDetailsService).passwordEncoder(new Sha512PasswordEncoder());
     }
 }
