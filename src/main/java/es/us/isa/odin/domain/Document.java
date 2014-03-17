@@ -111,7 +111,6 @@ public class Document<T> {
 	@PrePersist
 	public void prePersist() {
 		System.out.println("PRE DOC");
-		addExtraData("KOKO", "KK");
 	}
 	
 	@PostPersist
