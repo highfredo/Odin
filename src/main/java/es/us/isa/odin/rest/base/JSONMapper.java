@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule;
 
 
 public class JSONMapper extends ObjectMapper {
@@ -18,6 +19,7 @@ public class JSONMapper extends ObjectMapper {
         registerModule(module);
         registerModule(new JodaModule());
         registerModule(new GuavaModule());
+        registerModule(new JsonOrgModule());
     }
 
 }
